@@ -24,7 +24,7 @@ public class LoginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewModel = new LoginFragmentViewModel(new Login("salsaL", "salsaS"));
+        viewModel = new LoginFragmentViewModel(new Login());
 
         FragmentLoginBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
         binding.setViewModel(viewModel);

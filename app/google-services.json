@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "482330209582",
+    "firebase_url": "https://loginmvvmapp.firebaseio.com",
+    "project_id": "loginmvvmapp",
+    "storage_bucket": "loginmvvmapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482330209582:android:d02d972a141f315a",
+        "android_client_info": {
+          "package_name": "zalho.com.br.loginmvvmexampleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482330209582-1cm7h7gg7e56pbqj8ai79furm7inlagt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "zalho.com.br.loginmvvmexampleapp",
+            "certificate_hash": "b93d2af3470401ae733a03d3402e81e37792093d"
+          }
+        },
+        {
+          "client_id": "482330209582-p84afs64vqjne1r0ge37soajffnlcvo3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3bDPV2cn5jM_CRIqY-3h8VAN-ueU6kZQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482330209582-p84afs64vqjne1r0ge37soajffnlcvo3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

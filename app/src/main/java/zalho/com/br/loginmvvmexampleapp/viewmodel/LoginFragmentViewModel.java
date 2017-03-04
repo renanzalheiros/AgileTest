@@ -7,8 +7,6 @@ import android.view.View;
 
 import zalho.com.br.loginmvvmexampleapp.model.Login;
 
-import static android.content.ContentValues.TAG;
-
 /**
  * Created by andre on 24/02/2017.
  */
@@ -18,7 +16,7 @@ public class LoginFragmentViewModel extends BaseObservable {
     public ObservableField<String> campoLogin;
     public ObservableField<String> campoSenha;
 
-    Login login;
+    private Login login;
 
     public LoginFragmentViewModel(Login login) {
         this.login = login;
@@ -35,8 +33,8 @@ public class LoginFragmentViewModel extends BaseObservable {
     }
 
     public void onClickLogin(View view){
-        this.login.setLogin(campoLogin.get());
-        this.login.setSenha(campoSenha.get());
+        login.setLogin(campoLogin.get());
+        login.setSenha(campoSenha.get());
         Log.i("Salsa", "onClickLogin: "+ login.getLogin());
         Log.i("Salsa", "onClickLogin: "+ login.getSenha());
     }
