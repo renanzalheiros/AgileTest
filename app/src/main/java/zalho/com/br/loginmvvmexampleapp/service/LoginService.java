@@ -24,7 +24,7 @@ public class LoginService {
         loginAuth = FirebaseAuth.getInstance();
     }
 
-    public Task<AuthResult> realizaLogin(Login login) {
+    public Task<AuthResult> verificaCredenciais(Login login) {
         return loginAuth.signInWithEmailAndPassword(login.getLogin() + compLogin, login.getSenha());
     }
 }
