@@ -5,7 +5,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import zalho.com.br.loginmvvmexampleapp.fragments.LoginFragment;
+import com.google.firebase.FirebaseApp;
+
+import zalho.com.br.loginmvvmexampleapp.view.fragments.LoginFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        FirebaseApp.initializeApp(getApplicationContext());
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();

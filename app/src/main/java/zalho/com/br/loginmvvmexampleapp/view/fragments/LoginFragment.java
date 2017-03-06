@@ -1,4 +1,4 @@
-package zalho.com.br.loginmvvmexampleapp.fragments;
+package zalho.com.br.loginmvvmexampleapp.view.fragments;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.databinding.FragmentLoginBinding;
 import zalho.com.br.loginmvvmexampleapp.model.Login;
-import zalho.com.br.loginmvvmexampleapp.viewmodel.LoginFragmentViewModel;
+import zalho.com.br.loginmvvmexampleapp.view.viewmodel.LoginFragmentViewModel;
 
 /**
  * Created by andre on 24/02/2017.
