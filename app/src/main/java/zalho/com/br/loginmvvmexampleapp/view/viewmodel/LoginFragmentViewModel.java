@@ -1,10 +1,14 @@
 package zalho.com.br.loginmvvmexampleapp.view.viewmodel;
 
+import android.app.Activity;
+import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -46,10 +50,18 @@ public class LoginFragmentViewModel extends BaseObservable {
     }
 
     public void onClickLogin(final View view){
+        //Fechar o teclado;
+        InputMethodManager systemService = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        systemService.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
         if(campoLogin.get() == null){
             Toast.makeText(view.getContext(), "Campo login deve ser preenchido", Toast.LENGTH_SHORT).show();
         } else if(campoSenha.get() == null){
             Toast.makeText(view.getContext(), "Campo senha deve ser preenchido", Toast.LENGTH_SHORT).show();
+        } else if(campoLogin.get().length() < 5){
+            Toast.makeText(view.getContext(), "Campo login deve ter pelo menos 5 caracteres", Toast.LENGTH_SHORT).show();
+        } else if(campoSenha.get().length() < 6){
+            Toast.makeText(view.getContext(), "Campo senha deve ter pelo menos 6 caracteres", Toast.LENGTH_SHORT).show();
         } else {
             login.setLogin(campoLogin.get());
             login.setSenha(campoSenha.get());
@@ -64,7 +76,9 @@ public class LoginFragmentViewModel extends BaseObservable {
                         ft.replace(R.id.frame_layout_app, new DashboardFragment());
                         ft.commit();
                     } else {
-                        Toast.makeText(view.getContext(), "Não foi possível realizar login.", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(view.getContext(), "Login ou senha inválidos", Toast.LENGTH_LONG).show();
+                        Snackbar snackbar = Snackbar.make(view, "Login ou senha inválidos", Snackbar.LENGTH_SHORT);
+                        snackbar.show();
                     }
                 }
             });
