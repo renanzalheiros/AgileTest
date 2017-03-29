@@ -26,8 +26,9 @@
                 android:id="@+id/et_login"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Login"
-                android:text="@={viewModel.campoLogin}"/>
+                android:hint="Email"
+                android:text="@={viewModel.campoLogin}"
+                android:inputType="textEmailAddress"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout

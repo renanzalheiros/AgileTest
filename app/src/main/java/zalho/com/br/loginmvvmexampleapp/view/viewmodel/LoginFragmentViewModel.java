@@ -1,6 +1,5 @@
 package zalho.com.br.loginmvvmexampleapp.view.viewmodel;
 
-import android.app.Activity;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
@@ -19,8 +18,7 @@ import zalho.com.br.loginmvvmexampleapp.MainActivity;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.manager.LoginManager;
 import zalho.com.br.loginmvvmexampleapp.model.Login;
-import zalho.com.br.loginmvvmexampleapp.service.LoginService;
-import zalho.com.br.loginmvvmexampleapp.view.fragments.DashboardFragment;
+import zalho.com.br.loginmvvmexampleapp.view.fragments.TimelineFragment;
 
 /**
  * Created by andre on 24/02/2017.
@@ -55,11 +53,11 @@ public class LoginFragmentViewModel extends BaseObservable {
         systemService.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
         if(campoLogin.get() == null){
-            Toast.makeText(view.getContext(), "Campo login deve ser preenchido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "Campo email deve ser preenchido", Toast.LENGTH_SHORT).show();
         } else if(campoSenha.get() == null){
             Toast.makeText(view.getContext(), "Campo senha deve ser preenchido", Toast.LENGTH_SHORT).show();
         } else if(campoLogin.get().length() < 5){
-            Toast.makeText(view.getContext(), "Campo login deve ter pelo menos 5 caracteres", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "Campo email deve ter pelo menos 5 caracteres", Toast.LENGTH_SHORT).show();
         } else if(campoSenha.get().length() < 6){
             Toast.makeText(view.getContext(), "Campo senha deve ter pelo menos 6 caracteres", Toast.LENGTH_SHORT).show();
         } else {
@@ -73,11 +71,11 @@ public class LoginFragmentViewModel extends BaseObservable {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         FragmentTransaction ft = ((MainActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.frame_layout_app, new DashboardFragment());
+                        ft.replace(R.id.frame_layout_app, new TimelineFragment());
                         ft.commit();
                     } else {
 //                        Toast.makeText(view.getContext(), "Login ou senha inválidos", Toast.LENGTH_LONG).show();
-                        Snackbar snackbar = Snackbar.make(view, "Login ou senha inválidos", Snackbar.LENGTH_SHORT);
+                        Snackbar snackbar = Snackbar.make(view, "Email ou senha inválidos", Snackbar.LENGTH_SHORT);
                         snackbar.show();
                     }
                 }

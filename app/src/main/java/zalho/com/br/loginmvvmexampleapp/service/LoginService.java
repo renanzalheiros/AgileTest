@@ -15,7 +15,7 @@ import zalho.com.br.loginmvvmexampleapp.model.Login;
 
 public class LoginService {
 
-    private final String compLogin = "@loginmvvm.com";
+//    private final String compLogin = "@loginmvvm.com";
 
     private FirebaseAuth loginAuth;
     private FirebaseAuth.AuthStateListener authListener;
@@ -25,6 +25,6 @@ public class LoginService {
     }
 
     public Task<AuthResult> verificaCredenciais(Login login) {
-        return loginAuth.signInWithEmailAndPassword(login.getLogin() + compLogin, login.getSenha());
+        return loginAuth.signInWithEmailAndPassword(login.getLogin(), login.getSenha());
     }
 }

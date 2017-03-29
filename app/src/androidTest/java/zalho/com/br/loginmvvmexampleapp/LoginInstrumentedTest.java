@@ -1,9 +1,8 @@
 package zalho.com.br.loginmvvmexampleapp;
 
-import android.app.Instrumentation;
-import android.content.Context;
 import android.os.SystemClock;
-import android.support.test.InstrumentationRegistry;
+import android.support.test.filters.LargeTest;
+import android.support.test.filters.SmallTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -15,11 +14,12 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
 
 /**
@@ -33,19 +33,32 @@ public class LoginInstrumentedTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Before
-    public void beforeTests(){
-        Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-        Context context = instrumentation.getTargetContext();
+    @Test
+    public void loginFail(){
+        onView(withId(R.id.et_login))
+                .perform(typeText("zalho@loginmvvm.com"), closeSoftKeyboard());
+
+        onView(withId(R.id.et_senha))
+                .perform(typeText("123456"), closeSoftKeyboard());
+
+        onView(withId(R.id.btn_entrar)).perform(click());
+        SystemClock.sleep(3000);
+
+        try{
+            onView(withId(R.id.tv_bemvindo)).check(doesNotExist());
+            assertTrue(true);
+        } catch (Exception e){
+            assertFalse(true);
+        }
     }
 
     @Test
-    public void loginSuccess() throws Exception {
+    public void loginSuccess() {
         // Context of the app under test.
 //        Context appContext = InstrumentationRegistry.getTargetContext();
 
         onView(withId(R.id.et_login))
-                .perform(typeText("salsa"), closeSoftKeyboard());
+                .perform(typeText("salsa@loginmvvm.com"), closeSoftKeyboard());
 
         onView(withId(R.id.et_senha))
                 .perform(typeText("123456"), closeSoftKeyboard());
