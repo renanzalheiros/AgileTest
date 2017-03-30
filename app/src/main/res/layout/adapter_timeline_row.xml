@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="zalho.com.br.loginmvvmexampleapp.view.viewmodel.TimelineHolderViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/lyt_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/humor_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/lyt_parent"
+            app:layout_constraintBottom_toBottomOf="@id/lyt_parent"
+            app:layout_constraintStart_toStartOf="@id/lyt_parent"
+            android:src="@drawable/common_google_signin_btn_icon_dark"/>
+
+        <TextView
+            android:id="@+id/humor_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feliz"
+            android:layout_margin="8dp"
+            app:layout_constraintTop_toTopOf="@id/lyt_parent"
+            app:layout_constraintBottom_toBottomOf="@id/lyt_parent"
+            app:layout_constraintStart_toEndOf="@id/humor_image"
+            app:layout_constraintEnd_toStartOf="@id/humor_time" />
+
+        <TextView
+            android:id="@+id/humor_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="18:15"
+            app:layout_constraintEnd_toEndOf="@id/lyt_parent"
+            app:layout_constraintBottom_toBottomOf="@id/lyt_parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

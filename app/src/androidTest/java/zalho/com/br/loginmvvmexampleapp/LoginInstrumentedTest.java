@@ -1,6 +1,8 @@
 package zalho.com.br.loginmvvmexampleapp;
 
+import android.content.Context;
 import android.os.SystemClock;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.LargeTest;
 import android.support.test.filters.SmallTest;
 import android.support.test.rule.ActivityTestRule;
@@ -45,7 +47,7 @@ public class LoginInstrumentedTest {
         SystemClock.sleep(3000);
 
         try{
-            onView(withId(R.id.tv_bemvindo)).check(doesNotExist());
+            onView(withId(R.id.rv_timeline)).check(doesNotExist());
             assertTrue(true);
         } catch (Exception e){
             assertFalse(true);
@@ -67,7 +69,7 @@ public class LoginInstrumentedTest {
         SystemClock.sleep(3000);
 
         try{
-            onView(withId(R.id.tv_bemvindo)).check(matches(isDisplayed()));
+            onView(withId(R.id.rv_timeline)).check(matches(isDisplayed()));
             assertTrue(true);
         } catch (Exception e) {
             assertFalse(true);
