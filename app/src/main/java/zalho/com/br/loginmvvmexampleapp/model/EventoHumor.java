@@ -1,11 +1,7 @@
 package zalho.com.br.loginmvvmexampleapp.model;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by andre on 29/03/2017.
@@ -14,14 +10,21 @@ import java.util.Map;
 public class EventoHumor {
 
     private Humor humor;
-    private Date data;
+    private Calendar data;
 
     public EventoHumor(Humor humor){
         this.humor = humor;
-        this.data = new Date();
+        data = Calendar.getInstance();
+        data.setTime(new Date());
     }
 
     public String humorInfo(){
         return humor.getInfoHumor().getMensagem();
     }
+
+    public String dataToString(){
+        return data.get(Calendar.DAY_OF_MONTH) + "/" +  data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR);
+    }
+
+
 }

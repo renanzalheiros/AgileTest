@@ -30,4 +30,10 @@ public class TimelineFragment extends Fragment{
 
         return binding.getRoot();
     }
+
+    @Override
+    public void onResume() {
+        viewModel.onResume();
+        super.onResume();
+    }
 }
