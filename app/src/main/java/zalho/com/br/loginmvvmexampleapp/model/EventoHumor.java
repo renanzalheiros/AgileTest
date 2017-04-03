@@ -22,8 +22,15 @@ public class EventoHumor {
         return humor.getInfoHumor().getMensagem();
     }
 
-    public String dataToString(){
-        return data.get(Calendar.DAY_OF_MONTH) + "/" +  data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR);
+    public String hourToString(){
+        if(data.get(Calendar.MINUTE) < 10){
+            return data.get(Calendar.HOUR_OF_DAY) + ":0" +  data.get(Calendar.MINUTE);
+        }
+        return data.get(Calendar.HOUR_OF_DAY) + ":" +  data.get(Calendar.MINUTE);
+    }
+
+    public int getHumorImagePath(){
+        return humor.getHumorImagePath();
     }
 
 

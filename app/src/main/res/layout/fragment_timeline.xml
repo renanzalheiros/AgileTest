@@ -15,6 +15,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/btn_troca_humor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Trocar humor"
+            app:layout_constraintBottom_toBottomOf="@id/lyt_timeline"
+            app:layout_constraintStart_toStartOf="@id/lyt_timeline"
+            app:layout_constraintEnd_toEndOf="@id/lyt_timeline"
+            android:onClick=""/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_timeline"
             android:layout_width="0dp"
@@ -23,7 +33,7 @@
             app:layout_constraintTop_toTopOf="@id/lyt_timeline"
             app:layout_constraintStart_toStartOf="@id/lyt_timeline"
             app:layout_constraintEnd_toEndOf="@id/lyt_timeline"
-            app:layout_constraintBottom_toBottomOf="@id/lyt_timeline">
+            app:layout_constraintBottom_toTopOf="@id/btn_troca_humor">
 
         </android.support.v7.widget.RecyclerView>
 

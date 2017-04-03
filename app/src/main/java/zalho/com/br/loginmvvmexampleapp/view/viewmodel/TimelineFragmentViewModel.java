@@ -5,10 +5,16 @@ import android.databinding.BindingAdapter;
 import android.databinding.ObservableArrayList;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
+import java.util.List;
+
+import zalho.com.br.loginmvvmexampleapp.MainActivity;
+import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.manager.TimelineManager;
 import zalho.com.br.loginmvvmexampleapp.model.EventoHumor;
 import zalho.com.br.loginmvvmexampleapp.view.adapter.TimelineAdapter;
+import zalho.com.br.loginmvvmexampleapp.view.fragments.TrocaHumorFragment;
 
 /**
  * Created by andre on 06/03/2017.
@@ -16,7 +22,7 @@ import zalho.com.br.loginmvvmexampleapp.view.adapter.TimelineAdapter;
 
 public class TimelineFragmentViewModel extends BaseObservable{
 
-    public ObservableArrayList<EventoHumor> listaHumor = new ObservableArrayList<>();
+    public final ObservableArrayList<EventoHumor> listaHumor = new ObservableArrayList<>();
 
     private TimelineManager manager;
 
@@ -31,10 +37,18 @@ public class TimelineFragmentViewModel extends BaseObservable{
     public void onResume(){
         if(manager == null){
             manager = new TimelineManager();
-        } else {
-            listaHumor.clear();
-            listaHumor.addAll(manager.getEventosHumor());
         }
 
+        listaHumor.clear();
+        List<EventoHumor> eventosHumor = manager.getEventosHumor();
+        listaHumor.addAll(eventosHumor);
+
+
+    }
+
+    public void onClickTrocarHumor(View view){
+        ((MainActivity) view.getContext()).getSupportFragmentManager().beginTransaction()
+            .replace(R.id.frame_layout_app, new TrocaHumorFragment())
+                .commit();
     }
 }

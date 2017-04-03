@@ -7,9 +7,9 @@ package zalho.com.br.loginmvvmexampleapp.model;
 public class Humor {
 
     private InformacaoHumor infoHumor;
-    private String humorImagePath;
+    private int humorImagePath;
 
-    public Humor(InformacaoHumor infoHumor, String humorImagePath){
+    public Humor(InformacaoHumor infoHumor, int humorImagePath){
         this.infoHumor = infoHumor;
         this.humorImagePath = humorImagePath;
     }
@@ -22,11 +22,11 @@ public class Humor {
         this.infoHumor = infoHumor;
     }
 
-    public String getHumorImagePath() {
+    public int getHumorImagePath() {
         return humorImagePath;
     }
 
-    public void setHumorImagePath(String humorImagePath) {
+    public void setHumorImagePath(int humorImagePath) {
         this.humorImagePath = humorImagePath;
     }
 }

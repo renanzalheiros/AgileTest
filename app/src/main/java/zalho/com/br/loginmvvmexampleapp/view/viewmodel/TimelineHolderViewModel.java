@@ -10,7 +10,7 @@ import zalho.com.br.loginmvvmexampleapp.model.EventoHumor;
 
 public class TimelineHolderViewModel extends BaseObservable {
 
-    private EventoHumor eventoHumor;
+    public EventoHumor eventoHumor;
 
     public TimelineHolderViewModel(EventoHumor evento){
         this.eventoHumor = evento;
