@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.databinding.FragmentLoginBinding;
-import zalho.com.br.loginmvvmexampleapp.model.Login;
-import zalho.com.br.loginmvvmexampleapp.view.viewmodel.LoginFragmentViewModel;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
+import zalho.com.br.loginmvvmexampleapp.model.viewmodel.LoginFragmentViewModel;
 
 /**
  * Created by andre on 24/02/2017.

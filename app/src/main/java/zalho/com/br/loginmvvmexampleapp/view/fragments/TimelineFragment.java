@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.databinding.FragmentTimelineBinding;
-import zalho.com.br.loginmvvmexampleapp.view.viewmodel.TimelineFragmentViewModel;
+import zalho.com.br.loginmvvmexampleapp.model.viewmodel.TimelineFragmentViewModel;
 
 /**
  * Created by andre on 06/03/2017.

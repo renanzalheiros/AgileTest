@@ -3,7 +3,7 @@ package zalho.com.br.loginmvvmexampleapp.manager;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
-import zalho.com.br.loginmvvmexampleapp.model.Login;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 import zalho.com.br.loginmvvmexampleapp.service.LoginService;
 
 /**

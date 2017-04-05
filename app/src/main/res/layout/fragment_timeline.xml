@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="zalho.com.br.loginmvvmexampleapp.view.viewmodel.TimelineFragmentViewModel" />
+            type="zalho.com.br.loginmvvmexampleapp.model.viewmodel.TimelineFragmentViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -23,7 +23,7 @@
             app:layout_constraintBottom_toBottomOf="@id/lyt_timeline"
             app:layout_constraintStart_toStartOf="@id/lyt_timeline"
             app:layout_constraintEnd_toEndOf="@id/lyt_timeline"
-            android:onClick=""/>
+            android:onClick="@{viewModel.onClickTrocarHumor}"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_timeline"

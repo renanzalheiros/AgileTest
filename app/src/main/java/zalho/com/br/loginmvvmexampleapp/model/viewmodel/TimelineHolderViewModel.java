@@ -1,8 +1,8 @@
-package zalho.com.br.loginmvvmexampleapp.view.viewmodel;
+package zalho.com.br.loginmvvmexampleapp.model.viewmodel;
 
 import android.databinding.BaseObservable;
 
-import zalho.com.br.loginmvvmexampleapp.model.EventoHumor;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
 
 /**
  * Created by andre on 30/03/2017.

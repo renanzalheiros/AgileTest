@@ -5,11 +5,11 @@
     <data>
         <variable
             name="viewModel"
-            type="zalho.com.br.loginmvvmexampleapp.view.viewmodel.TimelineHolderViewModel" />
+            type="zalho.com.br.loginmvvmexampleapp.model.viewmodel.TimelineHolderViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/lyt_parent"
+        android:id="@+id/lyt_adapter_timeline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingEnd="48dp"
@@ -24,9 +24,9 @@
             android:layout_height="wrap_content"
             android:src="@{viewModel.eventoHumor.getHumorImagePath}"
             tools:src="@drawable/common_google_signin_btn_icon_dark"
-            app:layout_constraintTop_toTopOf="@id/lyt_parent"
-            app:layout_constraintBottom_toBottomOf="@id/lyt_parent"
-            app:layout_constraintStart_toStartOf="@id/lyt_parent" />
+            app:layout_constraintTop_toTopOf="@id/lyt_adapter_timeline"
+            app:layout_constraintBottom_toBottomOf="@id/lyt_adapter_timeline"
+            app:layout_constraintStart_toStartOf="@id/lyt_adapter_timeline" />
 
 
         <TextView
@@ -36,8 +36,8 @@
             android:layout_margin="8dp"
             android:text="@{viewModel.eventoHumor.hourToString}"
             tools:text="18:15"
-            app:layout_constraintEnd_toEndOf="@id/lyt_parent"
-            app:layout_constraintBottom_toBottomOf="@id/lyt_parent" />
+            app:layout_constraintEnd_toEndOf="@id/lyt_adapter_timeline"
+            app:layout_constraintBottom_toBottomOf="@id/lyt_adapter_timeline" />
 
         <TextView
             android:id="@+id/humor_text"
@@ -46,8 +46,8 @@
             android:text="@{viewModel.eventoHumor.humorInfo}"
             android:layout_margin="8dp"
             tools:text="Feliz"
-            app:layout_constraintTop_toTopOf="@id/lyt_parent"
-            app:layout_constraintBottom_toBottomOf="@id/lyt_parent"
+            app:layout_constraintTop_toTopOf="@id/lyt_adapter_timeline"
+            app:layout_constraintBottom_toBottomOf="@id/lyt_adapter_timeline"
             app:layout_constraintStart_toEndOf="@id/humor_image"
             app:layout_constraintEnd_toStartOf="@id/humor_time" />
     </android.support.constraint.ConstraintLayout>

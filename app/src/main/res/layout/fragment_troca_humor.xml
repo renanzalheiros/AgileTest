@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="zalho.com.br.loginmvvmexampleapp.view.viewmodel.TrocaHumorFragmentViewModel" />
+            type="zalho.com.br.loginmvvmexampleapp.model.viewmodel.TrocaHumorFragmentViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -14,26 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imagem_selecionada_troca_humor"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_selecao_humor"
             android:layout_width="0dp"
-            android:contentDescription="icone humor selecionado"
             android:layout_height="wrap_content"
-            tools:src="@drawable/common_google_signin_btn_icon_light"
+            android:layout_marginTop="12dp"
+            app:itemsHumor="@{viewModel.eventos}"
             app:layout_constraintTop_toTopOf="@id/lyt_troca_humor"
-            app:layout_constraintStart_toStartOf="@id/lyt_troca_humor" />
+            app:layout_constraintStart_toStartOf="@id/lyt_troca_humor"
+            app:layout_constraintEnd_toEndOf="@id/lyt_troca_humor">
 
-        <TextView
-            android:id="@+id/texto_selecionado_troca_humor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            tools:text="Feliz"
-            app:layout_constraintStart_toEndOf="@id/imagem_selecionada_troca_humor"
-            app:layout_constraintEnd_toEndOf="@id/lyt_troca_humor"
-            app:layout_constraintTop_toTopOf="@id/lyt_troca_humor"
-            app:layout_constraintBottom_toBottomOf="@id/imagem_selecionada_troca_humor" />
+        </android.support.v7.widget.RecyclerView>
 
     </android.support.constraint.ConstraintLayout>
 

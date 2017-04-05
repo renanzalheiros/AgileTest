@@ -6,7 +6,7 @@ import com.google.firebase.auth.AuthResult;
 import org.junit.Test;
 
 import zalho.com.br.loginmvvmexampleapp.manager.LoginManager;
-import zalho.com.br.loginmvvmexampleapp.model.Login;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 
 import static junit.framework.Assert.assertEquals;
 

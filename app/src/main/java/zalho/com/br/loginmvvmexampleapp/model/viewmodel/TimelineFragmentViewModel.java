@@ -1,4 +1,4 @@
-package zalho.com.br.loginmvvmexampleapp.view.viewmodel;
+package zalho.com.br.loginmvvmexampleapp.model.viewmodel;
 
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
@@ -12,7 +12,7 @@ import java.util.List;
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.manager.TimelineManager;
-import zalho.com.br.loginmvvmexampleapp.model.EventoHumor;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
 import zalho.com.br.loginmvvmexampleapp.view.adapter.TimelineAdapter;
 import zalho.com.br.loginmvvmexampleapp.view.fragments.TrocaHumorFragment;
 
@@ -42,8 +42,6 @@ public class TimelineFragmentViewModel extends BaseObservable{
         listaHumor.clear();
         List<EventoHumor> eventosHumor = manager.getEventosHumor();
         listaHumor.addAll(eventosHumor);
-
-
     }
 
     public void onClickTrocarHumor(View view){

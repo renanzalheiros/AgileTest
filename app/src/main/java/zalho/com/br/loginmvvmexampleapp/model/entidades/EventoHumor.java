@@ -1,4 +1,4 @@
-package zalho.com.br.loginmvvmexampleapp.model;
+package zalho.com.br.loginmvvmexampleapp.model.entidades;
 
 import java.util.Calendar;
 import java.util.Date;

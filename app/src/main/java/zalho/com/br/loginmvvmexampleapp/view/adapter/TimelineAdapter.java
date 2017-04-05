@@ -10,7 +10,7 @@ import java.util.List;
 
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.databinding.AdapterTimelineRowBinding;
-import zalho.com.br.loginmvvmexampleapp.model.EventoHumor;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
 import zalho.com.br.loginmvvmexampleapp.view.viewholder.TimelineViewHolder;
 
 /**

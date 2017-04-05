@@ -1,13 +1,10 @@
 package zalho.com.br.loginmvvmexampleapp.service;
 
-import android.content.Context;
-
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import zalho.com.br.loginmvvmexampleapp.model.Login;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 
 /**
  * Created by andre on 06/03/2017.

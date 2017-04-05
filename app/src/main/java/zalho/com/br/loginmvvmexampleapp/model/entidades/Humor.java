@@ -1,4 +1,4 @@
-package zalho.com.br.loginmvvmexampleapp.model;
+package zalho.com.br.loginmvvmexampleapp.model.entidades;
 
 /**
  * Created by andre on 30/03/2017.

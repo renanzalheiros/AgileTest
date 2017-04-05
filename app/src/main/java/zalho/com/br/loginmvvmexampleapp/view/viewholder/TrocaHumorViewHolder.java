@@ -2,19 +2,20 @@ package zalho.com.br.loginmvvmexampleapp.view.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 
-import zalho.com.br.loginmvvmexampleapp.databinding.AdapterTimelineRowBinding;
+import zalho.com.br.loginmvvmexampleapp.databinding.AdapterTrocaHumorRowBinding;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
 import zalho.com.br.loginmvvmexampleapp.model.viewmodel.TimelineHolderViewModel;
+import zalho.com.br.loginmvvmexampleapp.model.viewmodel.TrocaHumorHolderViewModel;
 
 /**
- * Created by andre on 29/03/2017.
+ * Created by andre on 04/04/2017.
  */
 
-public class TimelineViewHolder extends RecyclerView.ViewHolder {
+public class TrocaHumorViewHolder extends RecyclerView.ViewHolder {
 
-    AdapterTimelineRowBinding binding;
+    AdapterTrocaHumorRowBinding binding;
 
-    public TimelineViewHolder(AdapterTimelineRowBinding binding) {
+    public TrocaHumorViewHolder(AdapterTrocaHumorRowBinding binding) {
         super(binding.getRoot());
 
         this.binding = binding;
@@ -22,9 +23,10 @@ public class TimelineViewHolder extends RecyclerView.ViewHolder {
 
     public void bindData(EventoHumor evento) {
         if (binding.getViewModel() == null) {
-            binding.setViewModel(new TimelineHolderViewModel(evento));
+            binding.setViewModel(new TrocaHumorHolderViewModel(evento));
         } else {
             binding.getViewModel().setEvento(evento);
         }
     }
+
 }

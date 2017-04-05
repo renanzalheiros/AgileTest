@@ -1,4 +1,4 @@
-package zalho.com.br.loginmvvmexampleapp.view.viewmodel;
+package zalho.com.br.loginmvvmexampleapp.model.viewmodel;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.manager.LoginManager;
-import zalho.com.br.loginmvvmexampleapp.model.Login;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 import zalho.com.br.loginmvvmexampleapp.view.fragments.TimelineFragment;
 
 /**

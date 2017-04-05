@@ -3,9 +3,9 @@ package zalho.com.br.loginmvvmexampleapp.manager;
 import java.util.ArrayList;
 import java.util.List;
 
-import zalho.com.br.loginmvvmexampleapp.model.EventoHumor;
-import zalho.com.br.loginmvvmexampleapp.model.Humor;
-import zalho.com.br.loginmvvmexampleapp.model.InformacaoHumor;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.Humor;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.InformacaoHumor;
 
 /**
  * Created by andre on 31/03/2017.
