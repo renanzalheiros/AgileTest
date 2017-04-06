@@ -45,8 +45,6 @@ public class TimelineFragmentViewModel extends BaseObservable{
     }
 
     public void onClickTrocarHumor(View view){
-        ((MainActivity) view.getContext()).getSupportFragmentManager().beginTransaction()
-            .replace(R.id.frame_layout_app, new TrocaHumorFragment())
-                .commit();
+        ((MainActivity) view.getContext()).navegarPara("timeline", TrocaHumorFragment.class);
     }
 }

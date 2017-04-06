@@ -30,7 +30,7 @@ public class TrocaHumorFragmentViewModel extends BaseObservable {
 
     @BindingAdapter("bind:itemsHumor")
     public static void bindList(RecyclerView rv, ObservableArrayList<EventoHumor> humorList){
-        LinearLayoutManager layoutManager = new LinearLayoutManager(rv.getContext());
+        GridLayoutManager layoutManager = new GridLayoutManager(rv.getContext(), 2);
         rv.setLayoutManager(layoutManager);
         rv.setAdapter(new TrocaHumorAdapter(humorList));
     }

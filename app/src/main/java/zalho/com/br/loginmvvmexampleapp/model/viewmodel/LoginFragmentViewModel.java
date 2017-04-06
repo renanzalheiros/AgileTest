@@ -70,9 +70,7 @@ public class LoginFragmentViewModel extends BaseObservable {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        FragmentTransaction ft = ((MainActivity) view.getContext()).getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.frame_layout_app, new TimelineFragment());
-                        ft.commit();
+                        ((MainActivity) view.getContext()).navegarPara("login", TimelineFragment.class);
                     } else {
 //                        Toast.makeText(view.getContext(), "Login ou senha inválidos", Toast.LENGTH_LONG).show();
                         Snackbar snackbar = Snackbar.make(view, "Email ou senha inválidos", Snackbar.LENGTH_SHORT);

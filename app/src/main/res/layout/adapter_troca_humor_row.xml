@@ -13,7 +13,8 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/lyt_adapter_troca_humor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp"
+        android:onClick="@{viewModel.onSelectHumor}">
 
         <ImageView
             android:id="@+id/imagem_troca_humor"
@@ -23,7 +24,8 @@
             android:src="@{viewModel.evento.getHumorImagePath}"
             tools:src="@drawable/common_google_signin_btn_icon_light"
             app:layout_constraintTop_toTopOf="@id/lyt_adapter_troca_humor"
-            app:layout_constraintStart_toStartOf="@id/lyt_adapter_troca_humor" />
+            app:layout_constraintStart_toStartOf="@id/lyt_adapter_troca_humor"
+            app:layout_constraintBottom_toBottomOf="@id/lyt_adapter_troca_humor"/>
 
         <TextView
             android:id="@+id/texto_troca_humor"
