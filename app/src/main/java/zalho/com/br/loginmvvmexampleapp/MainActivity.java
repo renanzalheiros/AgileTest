@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void navegarPara(String origem, Class<?> destino){
         try {
+            getSupportFragmentManager().getFragments().get(0);
             getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_layout_app, (Fragment) destino.newInstance()).addToBackStack(origem)
                     .commit();

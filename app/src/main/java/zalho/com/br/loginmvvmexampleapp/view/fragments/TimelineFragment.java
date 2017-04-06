@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import zalho.com.br.loginmvvmexampleapp.MainActivity;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.databinding.FragmentTimelineBinding;
 import zalho.com.br.loginmvvmexampleapp.model.viewmodel.TimelineFragmentViewModel;
@@ -33,7 +34,8 @@ public class TimelineFragment extends Fragment{
 
     @Override
     public void onResume() {
-        viewModel.onResume();
+        MainActivity activity = (MainActivity) getActivity();
+        viewModel.onResume(activity);
         super.onResume();
     }
 }

@@ -20,6 +20,18 @@ public class MvvmApplication extends Application {
     }
 
     public TimelineManager getTimelineManager(){
-        return timelineManager;
+        if(timelineManager == null){
+            return new TimelineManager();
+        } else {
+            return timelineManager;
+        }
+    }
+
+    public TrocaHumorManager getTrocaHumorManager(){
+        if(trocaHumorManager == null){
+            return new TrocaHumorManager();
+        } else {
+            return trocaHumorManager;
+        }
     }
 }
