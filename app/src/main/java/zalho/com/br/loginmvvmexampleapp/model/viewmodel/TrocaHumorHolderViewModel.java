@@ -26,7 +26,9 @@ public class TrocaHumorHolderViewModel extends BaseObservable {
     }
 
     public void onSelectHumor(View view){
-        MainActivity context = (MainActivity) view.getContext();
-        context.getSupportFragmentManager().popBackStack();
+        TimelineManager timelineManager = ((MvvmApplication) ((MainActivity) view.getContext()).getApplication()).getTimelineManager();
+        this.evento.setNewDate();
+        timelineManager.addEventoHumor(evento);
+        ((MainActivity) view.getContext()).getSupportFragmentManager().popBackStack();
     }
 }

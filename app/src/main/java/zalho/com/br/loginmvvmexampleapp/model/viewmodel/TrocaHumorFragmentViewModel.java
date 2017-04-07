@@ -20,12 +20,8 @@ import zalho.com.br.loginmvvmexampleapp.view.adapter.TrocaHumorAdapter;
 public class TrocaHumorFragmentViewModel extends BaseObservable {
 
     public final ObservableArrayList<EventoHumor> eventos = new ObservableArrayList<>();
-    private TrocaHumorManager manager;
 
     public TrocaHumorFragmentViewModel(){
-        manager = new TrocaHumorManager();
-        eventos.clear();
-        eventos.addAll(manager.getEventosHumorCadastrados());
     }
 
     @BindingAdapter("bind:itemsHumor")
@@ -35,10 +31,10 @@ public class TrocaHumorFragmentViewModel extends BaseObservable {
         rv.setAdapter(new TrocaHumorAdapter(humorList));
     }
 
-    public void onResume(){
-        if(manager == null){
-            manager = new TrocaHumorManager();
-        }
+    public void onResume(TrocaHumorManager manager){
+//        if(manager == null){
+//            manager = new TrocaHumorManager();
+//        }
 
         eventos.clear();
         eventos.addAll(manager.getEventosHumorCadastrados());

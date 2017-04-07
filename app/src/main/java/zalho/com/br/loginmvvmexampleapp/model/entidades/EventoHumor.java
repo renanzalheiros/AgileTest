@@ -33,5 +33,9 @@ public class EventoHumor {
         return humor.getHumorImagePath();
     }
 
+    public void setNewDate(){
+        this.data.setTime(new Date());
+    }
+
 
 }

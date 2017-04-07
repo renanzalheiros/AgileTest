@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import zalho.com.br.loginmvvmexampleapp.MvvmApplication;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.databinding.FragmentTrocaHumorBinding;
 import zalho.com.br.loginmvvmexampleapp.model.viewmodel.TrocaHumorFragmentViewModel;
@@ -33,7 +34,7 @@ public class TrocaHumorFragment extends Fragment {
 
     @Override
     public void onResume() {
-        viewModel.onResume();
+        viewModel.onResume(((MvvmApplication) getActivity().getApplication()).getTrocaHumorManager());
         super.onResume();
     }
 }

@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
+import zalho.com.br.loginmvvmexampleapp.MvvmApplication;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.databinding.FragmentTimelineBinding;
+import zalho.com.br.loginmvvmexampleapp.manager.TimelineManager;
 import zalho.com.br.loginmvvmexampleapp.model.viewmodel.TimelineFragmentViewModel;
 
 /**
@@ -34,8 +36,8 @@ public class TimelineFragment extends Fragment{
 
     @Override
     public void onResume() {
-        MainActivity activity = (MainActivity) getActivity();
-        viewModel.onResume(activity);
+        TimelineManager timelineManager = ((MvvmApplication) getActivity().getApplication()).getTimelineManager();
+        viewModel.onResume(timelineManager);
         super.onResume();
     }
 }

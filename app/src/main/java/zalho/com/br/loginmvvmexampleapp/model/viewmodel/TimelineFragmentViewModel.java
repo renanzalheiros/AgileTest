@@ -7,9 +7,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import java.util.Collections;
 import java.util.List;
 
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
+import zalho.com.br.loginmvvmexampleapp.MvvmApplication;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.manager.TimelineManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
@@ -24,8 +26,6 @@ public class TimelineFragmentViewModel extends BaseObservable{
 
     public final ObservableArrayList<EventoHumor> listaHumor = new ObservableArrayList<>();
 
-    private TimelineManager manager;
-
     @BindingAdapter("bind:itemsTimeline")
     public static void bindList(RecyclerView rv, ObservableArrayList<EventoHumor> list){
         LinearLayoutManager lytManager = new LinearLayoutManager(rv.getContext());
@@ -34,13 +34,10 @@ public class TimelineFragmentViewModel extends BaseObservable{
     }
 
     //chamar no método onResume do TimelineFragment para atualizar a lista a cada onResume
-    public void onResume(){
-        if(manager == null){
-            manager = new TimelineManager();
-        }
-
+    public void onResume(TimelineManager manager){
         listaHumor.clear();
         List<EventoHumor> eventosHumor = manager.getEventosHumor();
+        Collections.reverse(eventosHumor);
         listaHumor.addAll(eventosHumor);
     }
 
