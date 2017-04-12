@@ -5,6 +5,7 @@ import android.util.Patterns;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
+import rx.Observable;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 import zalho.com.br.loginmvvmexampleapp.service.LoginService;
 import zalho.com.br.loginmvvmexampleapp.service.LoginServiceImpl;
@@ -21,7 +22,9 @@ public class LoginManager {
         this.loginService = loginService;
     }
 
-    public String realizaLogin(Login login){
+    public Observable<String> realizaLogin(Login login) {
+//        String first = loginService.verificaCredenciais(login.getLogin(), login.getSenha()).toBlocking().first();
+
         return loginService.verificaCredenciais(login.getLogin(), login.getSenha());
 
 //        Task<AuthResult> authResultTask = loginService.verificaCredenciais(login);
@@ -38,15 +41,15 @@ public class LoginManager {
 //        return retorno;
     }
 
-    public boolean validaEmail(String email){
+    public boolean validaEmail(String email) {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    public boolean validaSenha(String senha){
+    public boolean validaSenha(String senha) {
         return senha.length() > 5 && senha.length() < 10;
     }
 
-    public LoginService getLoginService(){
+    public LoginService getLoginService() {
         return loginService;
     }
 }

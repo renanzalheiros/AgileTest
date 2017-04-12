@@ -1,7 +1,6 @@
 package zalho.com.br.loginmvvmexampleapp.service;
 
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import rx.Observable;
 
 /**
  * Created by andre on 12/04/2017.
@@ -9,5 +8,5 @@ import com.google.firebase.auth.AuthResult;
 
 public interface LoginService {
 
-    public String verificaCredenciais(String email, String senha);
+    public Observable<String> verificaCredenciais(String email, String senha);
 }

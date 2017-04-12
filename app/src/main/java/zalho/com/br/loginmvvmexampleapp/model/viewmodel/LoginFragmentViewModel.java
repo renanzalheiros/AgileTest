@@ -14,6 +14,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
+import rx.Subscription;
+import rx.functions.Action1;
+import rx.subscriptions.CompositeSubscription;
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.manager.LoginManager;
@@ -28,6 +31,7 @@ public class LoginFragmentViewModel extends BaseObservable {
 
     public ObservableField<String> campoLogin;
     public ObservableField<String> campoSenha;
+    private CompositeSubscription subscriptions;
 
     private Login login;
     private LoginManager loginManager;
@@ -36,6 +40,7 @@ public class LoginFragmentViewModel extends BaseObservable {
         this.login = login;
         campoLogin = new ObservableField<>(login.getLogin());
         campoSenha = new ObservableField<>(login.getSenha());
+        subscriptions = new CompositeSubscription();
     }
 
     public void onResume(LoginManager manager){
@@ -86,13 +91,23 @@ public class LoginFragmentViewModel extends BaseObservable {
 //                }
 //            });
 
-            String userEmail = loginManager.realizaLogin(login);
+            Subscription subscription = loginManager.realizaLogin(login).subscribe(new Action1<String>() {
+                @Override
+                public void call(String email) {
+                    ((MainActivity) view.getContext()).navegarPara(TimelineFragment.class);
+                }
+            }, new Action1<Throwable>() {
+                @Override
+                public void call(Throwable throwable) {
+                    Snackbar.make(view, "Email ou senha incorretos", Snackbar.LENGTH_LONG).show();
+                }
+            });
 
-            if(userEmail == null || "".equals(userEmail)){
-                Snackbar.make(view, "Email ou senha incorretos", Snackbar.LENGTH_LONG).show();
-            } else {
-                ((MainActivity) view.getContext()).navegarPara(TimelineFragment.class);
-            }
+            subscriptions.add(subscription);
         }
+    }
+
+    public void onStop() {
+
     }
 }

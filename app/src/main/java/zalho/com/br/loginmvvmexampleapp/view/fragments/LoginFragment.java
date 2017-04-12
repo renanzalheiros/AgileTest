@@ -38,4 +38,10 @@ public class LoginFragment extends Fragment {
         viewModel.onResume(((MvvmApplication) getActivity().getApplication()).getLoginManager());
         super.onResume();
     }
+
+    @Override
+    public void onStop() {
+        viewModel.onStop();
+        super.onStop();
+    }
 }
