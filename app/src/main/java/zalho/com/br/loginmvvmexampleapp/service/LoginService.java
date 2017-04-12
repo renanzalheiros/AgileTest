@@ -2,26 +2,12 @@ package zalho.com.br.loginmvvmexampleapp.service;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-
-import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 
 /**
- * Created by andre on 06/03/2017.
+ * Created by andre on 12/04/2017.
  */
 
-public class LoginService {
+public interface LoginService {
 
-//    private final String compLogin = "@loginmvvm.com";
-
-    private FirebaseAuth loginAuth;
-    private FirebaseAuth.AuthStateListener authListener;
-
-    public LoginService(){
-        loginAuth = FirebaseAuth.getInstance();
-    }
-
-    public Task<AuthResult> verificaCredenciais(Login login) {
-        return loginAuth.signInWithEmailAndPassword(login.getLogin(), login.getSenha());
-    }
+    public String verificaCredenciais(String email, String senha);
 }

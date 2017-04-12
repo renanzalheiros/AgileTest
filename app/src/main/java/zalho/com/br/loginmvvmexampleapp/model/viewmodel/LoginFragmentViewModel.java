@@ -36,7 +36,10 @@ public class LoginFragmentViewModel extends BaseObservable {
         this.login = login;
         campoLogin = new ObservableField<>(login.getLogin());
         campoSenha = new ObservableField<>(login.getSenha());
-        loginManager = new LoginManager();
+    }
+
+    public void onResume(LoginManager manager){
+        this.loginManager = manager;
     }
 
     public void setCampoLogin(String campoLogin) {
@@ -56,28 +59,40 @@ public class LoginFragmentViewModel extends BaseObservable {
             Toast.makeText(view.getContext(), "Campo email deve ser preenchido", Toast.LENGTH_SHORT).show();
         } else if(campoSenha.get() == null){
             Toast.makeText(view.getContext(), "Campo senha deve ser preenchido", Toast.LENGTH_SHORT).show();
-        } else if(campoLogin.get().length() < 5){
-            Toast.makeText(view.getContext(), "Campo email deve ter pelo menos 5 caracteres", Toast.LENGTH_SHORT).show();
-        } else if(campoSenha.get().length() < 6){
-            Toast.makeText(view.getContext(), "Campo senha deve ter pelo menos 6 caracteres", Toast.LENGTH_SHORT).show();
+        } else if(!loginManager.validaEmail(campoLogin.get())){
+            Toast.makeText(view.getContext(), "Insira um email válido", Toast.LENGTH_SHORT).show();
+        } else if(!loginManager.validaSenha(campoSenha.get())){
+            Toast.makeText(view.getContext(), "Campo senha deve ter entre 5 e 10 caracteres", Toast.LENGTH_SHORT).show();
         } else {
             login.setLogin(campoLogin.get());
             login.setSenha(campoSenha.get());
 
-            Task<AuthResult> authResultTask = loginManager.realizaLogin(login);
+//            Task<AuthResult> authResultTask = loginManager.realizaLogin(this.login);
+//            if(retornoLogin.equals("loginSuccess")){
+//                ((MainActivity) view.getContext()).navegarPara(TimelineFragment.class);
+//            } else if(retornoLogin.equals("loginFail")){
+//                Snackbar.make(view, "Email ou senha inválidos", Snackbar.LENGTH_LONG).show();
+//            }
+//            authResultTask.addOnCompleteListener((MainActivity) view.getContext(), new OnCompleteListener<AuthResult>() {
+//                @Override
+//                public void onComplete(@NonNull Task<AuthResult> task) {
+//                    if(task.isSuccessful()){
+//                        ((MainActivity) view.getContext()).navegarPara(TimelineFragment.class);
+//                    } else {
+////                        Toast.makeText(view.getContext(), "Login ou senha inválidos", Toast.LENGTH_LONG).show();
+//                        Snackbar snackbar = Snackbar.make(view, "Email ou senha incorretos", Snackbar.LENGTH_SHORT);
+//                        snackbar.show();
+//                    }
+//                }
+//            });
 
-            authResultTask.addOnCompleteListener((MainActivity) view.getContext(), new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        ((MainActivity) view.getContext()).navegarPara("login", TimelineFragment.class);
-                    } else {
-//                        Toast.makeText(view.getContext(), "Login ou senha inválidos", Toast.LENGTH_LONG).show();
-                        Snackbar snackbar = Snackbar.make(view, "Email ou senha inválidos", Snackbar.LENGTH_SHORT);
-                        snackbar.show();
-                    }
-                }
-            });
+            String userEmail = loginManager.realizaLogin(login);
+
+            if(userEmail == null || "".equals(userEmail)){
+                Snackbar.make(view, "Email ou senha incorretos", Snackbar.LENGTH_LONG).show();
+            } else {
+                ((MainActivity) view.getContext()).navegarPara(TimelineFragment.class);
+            }
         }
     }
 }

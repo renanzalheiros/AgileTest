@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import zalho.com.br.loginmvvmexampleapp.MvvmApplication;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.databinding.FragmentLoginBinding;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
@@ -30,5 +31,11 @@ public class LoginFragment extends Fragment {
         binding.setViewModel(viewModel);
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        viewModel.onResume(((MvvmApplication) getActivity().getApplication()).getLoginManager());
+        super.onResume();
     }
 }
