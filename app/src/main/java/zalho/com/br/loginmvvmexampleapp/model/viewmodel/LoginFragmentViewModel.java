@@ -36,8 +36,7 @@ public class LoginFragmentViewModel extends BaseObservable {
     private Login login;
     private LoginManager loginManager;
 
-    public LoginFragmentViewModel(Login login) {
-        this.login = login;
+    public LoginFragmentViewModel() {
         campoLogin = new ObservableField<>(login.getLogin());
         campoSenha = new ObservableField<>(login.getSenha());
         subscriptions = new CompositeSubscription();
@@ -45,14 +44,6 @@ public class LoginFragmentViewModel extends BaseObservable {
 
     public void onResume(LoginManager manager){
         this.loginManager = manager;
-    }
-
-    public void setCampoLogin(String campoLogin) {
-        this.campoLogin.set(campoLogin);
-    }
-
-    public void setCampoSenha(String campoSenha) {
-        this.campoSenha.set(campoSenha);
     }
 
     public void onClickLogin(final View view){
@@ -108,6 +99,6 @@ public class LoginFragmentViewModel extends BaseObservable {
     }
 
     public void onStop() {
-
+        subscriptions.unsubscribe();
     }
 }

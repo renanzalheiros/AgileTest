@@ -48,8 +48,4 @@ public class LoginManager {
     public boolean validaSenha(String senha) {
         return senha.length() > 5 && senha.length() < 10;
     }
-
-    public LoginService getLoginService() {
-        return loginService;
-    }
 }

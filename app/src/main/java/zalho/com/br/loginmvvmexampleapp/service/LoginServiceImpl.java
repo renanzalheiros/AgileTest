@@ -18,10 +18,7 @@ import rx.functions.Func1;
  * Created by andre on 06/03/2017.
  */
 
-public class LoginServiceImpl extends BaseObservable implements LoginService {
-
-    private String userEmail;
-    private ObservableBoolean completou = new ObservableBoolean(false);
+public class LoginServiceImpl implements LoginService {
 
     @Override
     public Observable<String> verificaCredenciais(String email, String senha) {
@@ -31,27 +28,5 @@ public class LoginServiceImpl extends BaseObservable implements LoginService {
                 return authResult.getUser().getEmail();
             }
         });
-
-        /*
-        final Task<AuthResult> authResultTask = FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha);
-        authResultTask.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                setUserEmail(task.getResult().getUser().getEmail());
-            }
-        });
-
-
-
-        while(!completou.get()){
-            Log.i("Firebase - Conexao", "Conexao falhou");
-        }
-        return userEmail;
-         */
-    }
-
-    public void setUserEmail(String email){
-        userEmail = email;
-        completou.set(true);
     }
 }

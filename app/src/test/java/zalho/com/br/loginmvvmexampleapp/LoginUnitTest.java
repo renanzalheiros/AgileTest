@@ -1,8 +1,11 @@
 package zalho.com.br.loginmvvmexampleapp;
 
+import android.databinding.ObservableField;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,13 +14,18 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import rx.Observable;
 import rx.observers.TestSubscriber;
+import rx.subscriptions.CompositeSubscription;
 import zalho.com.br.loginmvvmexampleapp.manager.LoginManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 import zalho.com.br.loginmvvmexampleapp.service.LoginService;
 
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by andre on 17/03/2017.
@@ -26,6 +34,16 @@ import static junit.framework.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class LoginUnitTest {
 
+    public static final String LOGIN_SUCCESS = "salsa@loginmvvm.com";
+    public static final String SENHA_SUCCESS = "123qwe";
+
+    public static final String LOGIN_FAIL = "zalho@teste.com";
+    public static final String SENHA_FAIL = "123qwe";
+
+    public static final String INVALID_EMAIL = "zalho";
+
+    public static final String MSG_FAIL_EMAIL_SENHA = "Email ou senha incorretos";
+
     @Mock
     LoginService service;
 
@@ -33,14 +51,35 @@ public class LoginUnitTest {
 
     @Before
     public void beforeTests(){
-        Task<?> authResultTask = Mockito.mock(Task.class);
+        Observable<String> loginSucesso = Observable.just(LOGIN_SUCCESS);
+        when(service.verificaCredenciais(LOGIN_SUCCESS, SENHA_SUCCESS)).thenReturn(loginSucesso);
+
+        Observable<String> loginErro = Observable.just(MSG_FAIL_EMAIL_SENHA);
+        when(service.verificaCredenciais(LOGIN_FAIL, SENHA_FAIL)).thenReturn(loginErro);
     }
 
     @Test
-    public void testLogin(){
-        Login loginSuccess = new Login("salsa@loginmvvm.com", "123qwe");
-        Observable<String> stringObservable = manager.realizaLogin(loginSuccess);
+    public void testLoginSuccess(){
+        Login loginSuccess = new Login(LOGIN_SUCCESS, SENHA_SUCCESS);
+        TestSubscriber<String> testSubscriber = new TestSubscriber<>();
+        manager.realizaLogin(loginSuccess).subscribe(testSubscriber);
+        testSubscriber.assertValue(loginSuccess.getLogin());
+        testSubscriber.unsubscribe();
+    }
 
-//        assertEquals(email, loginSuccess.getLogin());
+    @Test
+    public void testLoginFail(){
+        Login loginFail = new Login(LOGIN_FAIL, SENHA_FAIL);
+        TestSubscriber<String> testSubscriber = new TestSubscriber<>();
+        manager.realizaLogin(loginFail).subscribe(testSubscriber);
+        testSubscriber.assertValue(MSG_FAIL_EMAIL_SENHA);
+        testSubscriber.unsubscribe();
+    }
+
+    @Test
+    public void testEmailValidationFail(){
+        boolean emailIsValid = manager.validaEmail(INVALID_EMAIL);
+
+        assertEquals(false, emailIsValid);
     }
 }
