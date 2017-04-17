@@ -37,6 +37,7 @@ public class LoginFragmentViewModel extends BaseObservable {
     private LoginManager loginManager;
 
     public LoginFragmentViewModel() {
+        login = new Login();
         campoLogin = new ObservableField<>(login.getLogin());
         campoSenha = new ObservableField<>(login.getSenha());
         subscriptions = new CompositeSubscription();
