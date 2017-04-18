@@ -57,7 +57,7 @@ public class LoginInstrumentedTest {
                 .perform(typeText("salsa@loginmvvm.com"), closeSoftKeyboard());
 
         onView(withId(R.id.et_senha))
-                .perform(typeText("123456"), closeSoftKeyboard());
+                .perform(typeText("123qwe"), closeSoftKeyboard());
 
         onView(withId(R.id.btn_entrar)).perform(click());
         SystemClock.sleep(3000);
@@ -68,6 +68,5 @@ public class LoginInstrumentedTest {
         } catch (Exception e) {
             assertFalse(true);
         }
-
     }
 }

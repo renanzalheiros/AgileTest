@@ -1,44 +1,21 @@
 package zalho.com.br.loginmvvmexampleapp;
 
 import android.os.SystemClock;
-import android.support.test.espresso.NoMatchingViewException;
-import android.support.test.espresso.UiController;
-import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.ViewAssertion;
-import android.support.test.espresso.matcher.BoundedMatcher;
-import android.support.test.internal.util.Checks;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.TextView;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-
-import zalho.com.br.loginmvvmexampleapp.view.adapter.TrocaHumorAdapter;
-import zalho.com.br.loginmvvmexampleapp.view.viewholder.TrocaHumorViewHolder;
-
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnHolderItem;
-import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItem;
-import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.hasDescendant;
-import static android.support.test.espresso.matcher.ViewMatchers.hasSibling;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static android.view.View.FIND_VIEWS_WITH_TEXT;
 import static org.hamcrest.core.AllOf.allOf;
 
 /**
@@ -56,21 +33,28 @@ public class TrocaHumorInstrumentedTest {
         // passar pelo login
         onView(withId(R.id.et_login))
                 .perform(typeText("salsa@loginmvvm.com"), closeSoftKeyboard());
-
         onView(withId(R.id.et_senha))
                 .perform(typeText("123qwe"), closeSoftKeyboard());
-
         onView(withId(R.id.btn_entrar)).perform(click());
         SystemClock.sleep(3000);
-
         //passou pelo login
 
+        //clicar no botão trocar humor na tela timeline
         onView(withId(R.id.btn_troca_humor)).perform(click());
         SystemClock.sleep(5000);
+
+        //clicar no view holder referente ao texto "Feliz" na tela de troca de humor
 //        onView(withId(R.id.rv_selecao_humor)).perform(actionOnHolderItem(withSubject("Feliz"), click()));
         onView(allOf(withId(R.id.texto_troca_humor), withText("Feliz"))).perform(click());
-        onView(withId(R.id.rv_timeline));
         SystemClock.sleep(2000);
+
+        //verificar se o primeiro item da lista na tela de timeline é o humor selecionado na tela anterior
+        onView(withRecyclerView(R.id.rv_timeline).atPosition(0)).check(matches(hasDescendant(withText("Feliz"))));
+        SystemClock.sleep(2000);
+    }
+
+    public static RecyclerViewMatcher withRecyclerView(final int recyclerViewId){
+        return new RecyclerViewMatcher(recyclerViewId);
     }
 
 //    public static Matcher<RecyclerView.ViewHolder> withSubject(final String text){
