@@ -22,6 +22,7 @@ import rx.observers.TestSubscriber;
 import rx.subscriptions.CompositeSubscription;
 import zalho.com.br.loginmvvmexampleapp.manager.LoginManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
+import zalho.com.br.loginmvvmexampleapp.model.viewmodel.LoginFragmentViewModel;
 import zalho.com.br.loginmvvmexampleapp.service.LoginService;
 
 import static junit.framework.Assert.assertEquals;
@@ -41,6 +42,8 @@ public class LoginUnitTest {
     public static final String SENHA_FAIL = "123qwe";
 
     public static final String INVALID_EMAIL = "zalho";
+    public static final String INVALID_SENHA_MIN = "1234";
+    public static final String INVALID_SENHA_MAX = "12345qwerta";
 
     public static final String MSG_FAIL_EMAIL_SENHA = "Email ou senha incorretos";
 
@@ -77,9 +80,14 @@ public class LoginUnitTest {
     }
 
     @Test
-    public void testEmailValidationFail(){
-        boolean emailIsValid = manager.validaEmail(INVALID_EMAIL);
+    public void testSenhaValidation(){
+        boolean senhaCurta = manager.validaSenha(INVALID_SENHA_MIN);
+        boolean senhaLonga = manager.validaSenha(INVALID_SENHA_MAX);
 
-        assertEquals(false, emailIsValid);
+        boolean senhaCorreta = manager.validaSenha(SENHA_SUCCESS);
+
+        assertEquals(false, senhaCurta);
+        assertEquals(false, senhaLonga);
+        assertEquals(true, senhaCorreta);
     }
 }
