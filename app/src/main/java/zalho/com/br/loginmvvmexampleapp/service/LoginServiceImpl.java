@@ -13,6 +13,7 @@ import com.kelvinapps.rxfirebase.RxFirebaseAuth;
 
 import rx.Observable;
 import rx.functions.Func1;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 
 /**
  * Created by andre on 06/03/2017.
@@ -21,8 +22,8 @@ import rx.functions.Func1;
 public class LoginServiceImpl implements LoginService {
 
     @Override
-    public Observable<String> verificaCredenciais(String email, String senha) {
-        return RxFirebaseAuth.signInWithEmailAndPassword(FirebaseAuth.getInstance(), email, senha).map(new Func1<AuthResult, String>() {
+    public Observable<String> verificaCredenciais(Login login) {
+        return RxFirebaseAuth.signInWithEmailAndPassword(FirebaseAuth.getInstance(), login.getLogin(), login.getSenha()).map(new Func1<AuthResult, String>() {
             @Override
             public String call(AuthResult authResult) {
                 return authResult.getUser().getEmail();

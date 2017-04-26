@@ -25,7 +25,7 @@ public class LoginManager {
     public Observable<String> realizaLogin(Login login) {
 //        String first = loginService.verificaCredenciais(login.getLogin(), login.getSenha()).toBlocking().first();
 
-        return loginService.verificaCredenciais(login.getLogin(), login.getSenha());
+        return loginService.verificaCredenciais(login);
 
 //        Task<AuthResult> authResultTask = loginService.verificaCredenciais(login);
 //        authResultTask.addOnCompleteListener(new OnCompleteListener<AuthResult>() {

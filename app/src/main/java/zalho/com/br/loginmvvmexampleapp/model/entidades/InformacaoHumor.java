@@ -17,7 +17,7 @@ public enum InformacaoHumor {
 
     private String vmensagem;
 
-    private InformacaoHumor(String vmensagem){
+    InformacaoHumor(String vmensagem){
         this.vmensagem = vmensagem;
     }
 

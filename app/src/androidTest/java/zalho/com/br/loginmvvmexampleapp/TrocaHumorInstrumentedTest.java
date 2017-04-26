@@ -37,6 +37,7 @@ public class TrocaHumorInstrumentedTest {
                 .perform(typeText("123qwe"), closeSoftKeyboard());
         onView(withId(R.id.btn_entrar)).perform(click());
         SystemClock.sleep(3000);
+
         //passou pelo login
 
         //clicar no botão trocar humor na tela timeline

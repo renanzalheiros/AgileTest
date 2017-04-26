@@ -36,8 +36,9 @@ public class TimelineFragment extends Fragment{
 
     @Override
     public void onResume() {
-        TimelineManager timelineManager = ((MvvmApplication) getActivity().getApplication()).getTimelineManager();
-        viewModel.onResume(timelineManager);
+//        TimelineManager timelineManager = ((MvvmApplication) getActivity().getApplication()).getTimelineManager();
+        ((MvvmApplication) getActivity().getApplication()).getTimelineComponent().inject(viewModel);
+        viewModel.onResume();
         super.onResume();
     }
 }

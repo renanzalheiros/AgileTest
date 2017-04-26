@@ -1,6 +1,7 @@
 package zalho.com.br.loginmvvmexampleapp.service;
 
 import rx.Observable;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 
 /**
  * Created by andre on 12/04/2017.
@@ -8,5 +9,5 @@ import rx.Observable;
 
 public interface LoginService {
 
-    public Observable<String> verificaCredenciais(String email, String senha);
+    Observable<String> verificaCredenciais(Login login);
 }

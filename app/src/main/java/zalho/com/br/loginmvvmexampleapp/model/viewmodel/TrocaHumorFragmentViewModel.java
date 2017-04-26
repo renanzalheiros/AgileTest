@@ -4,10 +4,9 @@ import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.databinding.ObservableArrayList;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import java.util.List;
+import javax.inject.Inject;
 
 import zalho.com.br.loginmvvmexampleapp.manager.TrocaHumorManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
@@ -21,6 +20,9 @@ public class TrocaHumorFragmentViewModel extends BaseObservable {
 
     public final ObservableArrayList<EventoHumor> eventos = new ObservableArrayList<>();
 
+    @Inject
+    TrocaHumorManager manager;
+
     public TrocaHumorFragmentViewModel(){
     }
 
@@ -31,7 +33,7 @@ public class TrocaHumorFragmentViewModel extends BaseObservable {
         rv.setAdapter(new TrocaHumorAdapter(humorList));
     }
 
-    public void onResume(TrocaHumorManager manager){
+    public void onResume(){
 //        if(manager == null){
 //            manager = new TrocaHumorManager();
 //        }

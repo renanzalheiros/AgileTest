@@ -17,14 +17,14 @@ public class TrocaHumorManager {
 
     public TrocaHumorManager(){
         humoresCadastrados = new ArrayList<>();
-        humoresCadastrados = populaEventos();
+        populaEventos();
     }
 
     public List<EventoHumor> getEventosHumorCadastrados(){
         return humoresCadastrados;
     }
 
-    private List<EventoHumor> populaEventos() {
+    private void populaEventos() {
 
         humoresCadastrados.add(new EventoHumor(new Humor(InformacaoHumor.BEM, android.R.drawable.ic_menu_report_image)));
         humoresCadastrados.add(new EventoHumor(new Humor(InformacaoHumor.EMPOLGADO, android.R.drawable.arrow_up_float)));
@@ -34,7 +34,6 @@ public class TrocaHumorManager {
         humoresCadastrados.add(new EventoHumor(new Humor(InformacaoHumor.DEPRIMIDO, android.R.drawable.alert_dark_frame)));
         humoresCadastrados.add(new EventoHumor(new Humor(InformacaoHumor.LUTO, android.R.drawable.alert_dark_frame)));
         humoresCadastrados.add(new EventoHumor(new Humor(InformacaoHumor.IRRITADO, android.R.drawable.alert_dark_frame)));
-        return humoresCadastrados;
     }
 
 }

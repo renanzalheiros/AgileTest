@@ -7,12 +7,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
-import zalho.com.br.loginmvvmexampleapp.MvvmApplication;
-import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.manager.TimelineManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
 import zalho.com.br.loginmvvmexampleapp.view.adapter.TimelineAdapter;
@@ -26,6 +27,9 @@ public class TimelineFragmentViewModel extends BaseObservable{
 
     public final ObservableArrayList<EventoHumor> listaHumor = new ObservableArrayList<>();
 
+    @Inject
+    TimelineManager manager;
+
     @BindingAdapter("bind:itemsTimeline")
     public static void bindList(RecyclerView rv, ObservableArrayList<EventoHumor> list){
         LinearLayoutManager lytManager = new LinearLayoutManager(rv.getContext());
@@ -34,11 +38,15 @@ public class TimelineFragmentViewModel extends BaseObservable{
     }
 
     //chamar no método onResume do TimelineFragment para atualizar a lista a cada onResume
-    public void onResume(TimelineManager manager){
+    public void onResume(){
         listaHumor.clear();
         List<EventoHumor> eventosHumor = manager.getEventosHumor();
-        Collections.reverse(eventosHumor);
-        listaHumor.addAll(eventosHumor);
+
+        List<EventoHumor> eventosInvertidos = new ArrayList<>();
+        eventosInvertidos.addAll(eventosHumor);
+        Collections.reverse(eventosInvertidos);
+
+        listaHumor.addAll(eventosInvertidos);
     }
 
     public void onClickTrocarHumor(View view){

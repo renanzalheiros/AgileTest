@@ -35,7 +35,9 @@ public class LoginFragment extends Fragment {
 
     @Override
     public void onResume() {
-        viewModel.onResume(((MvvmApplication) getActivity().getApplication()).getLoginManager());
+//        viewModel.onResume(((MvvmApplication) getActivity().getApplication()).getLoginManager());
+        ((MvvmApplication) getActivity().getApplication()).getLoginComponent().inject(viewModel);
+        viewModel.onResume();
         super.onResume();
     }
 

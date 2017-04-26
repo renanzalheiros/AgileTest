@@ -55,10 +55,12 @@ public class LoginUnitTest {
     @Before
     public void beforeTests(){
         Observable<String> loginSucesso = Observable.just(LOGIN_SUCCESS);
-        when(service.verificaCredenciais(LOGIN_SUCCESS, SENHA_SUCCESS)).thenReturn(loginSucesso);
+        Login login = new Login(LOGIN_SUCCESS, SENHA_SUCCESS);
+        when(service.verificaCredenciais(login)).thenReturn(loginSucesso);
 
         Observable<String> loginErro = Observable.just(MSG_FAIL_EMAIL_SENHA);
-        when(service.verificaCredenciais(LOGIN_FAIL, SENHA_FAIL)).thenReturn(loginErro);
+        Login loginFail = new Login(LOGIN_FAIL, SENHA_FAIL);
+        when(service.verificaCredenciais(loginFail)).thenReturn(loginErro);
     }
 
     @Test

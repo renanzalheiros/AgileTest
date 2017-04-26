@@ -3,22 +3,17 @@ package zalho.com.br.loginmvvmexampleapp.model.viewmodel;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
-import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import javax.inject.Inject;
 
 import rx.Subscription;
 import rx.functions.Action1;
 import rx.subscriptions.CompositeSubscription;
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
-import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.manager.LoginManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 import zalho.com.br.loginmvvmexampleapp.view.fragments.TimelineFragment;
@@ -34,7 +29,8 @@ public class LoginFragmentViewModel extends BaseObservable {
     private CompositeSubscription subscriptions;
 
     private Login login;
-    private LoginManager loginManager;
+    @Inject
+    LoginManager loginManager;
 
     public LoginFragmentViewModel() {
         login = new Login();
@@ -43,8 +39,7 @@ public class LoginFragmentViewModel extends BaseObservable {
         subscriptions = new CompositeSubscription();
     }
 
-    public void onResume(LoginManager manager){
-        this.loginManager = manager;
+    public void onResume(){
     }
 
     public void onClickLogin(final View view){

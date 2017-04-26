@@ -34,7 +34,8 @@ public class TrocaHumorFragment extends Fragment {
 
     @Override
     public void onResume() {
-        viewModel.onResume(((MvvmApplication) getActivity().getApplication()).getTrocaHumorManager());
+        ((MvvmApplication) getActivity().getApplication()).getTrocaHumorComponent().inject(viewModel);
+        viewModel.onResume();
         super.onResume();
     }
 }
