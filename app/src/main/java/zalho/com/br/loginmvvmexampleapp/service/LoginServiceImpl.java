@@ -26,7 +26,7 @@ public class LoginServiceImpl implements LoginService {
         return RxFirebaseAuth.signInWithEmailAndPassword(FirebaseAuth.getInstance(), login.getLogin(), login.getSenha()).map(new Func1<AuthResult, String>() {
             @Override
             public String call(AuthResult authResult) {
-                return authResult.getUser().getEmail();
+                return authResult.getUser().getUid();
             }
         });
     }

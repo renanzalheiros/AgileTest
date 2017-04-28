@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.kelvinapps.rxfirebase.RxFirebaseDatabase;
+
 import javax.inject.Inject;
 
 import rx.Subscription;
@@ -80,7 +82,7 @@ public class LoginFragmentViewModel extends BaseObservable {
 
             Subscription subscription = loginManager.realizaLogin(login).subscribe(new Action1<String>() {
                 @Override
-                public void call(String email) {
+                public void call(String userId) {
                     ((MainActivity) view.getContext()).navegarPara(TimelineFragment.class);
                 }
             }, new Action1<Throwable>() {
