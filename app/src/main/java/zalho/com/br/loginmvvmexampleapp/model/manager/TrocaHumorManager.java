@@ -1,4 +1,4 @@
-package zalho.com.br.loginmvvmexampleapp.manager;
+package zalho.com.br.loginmvvmexampleapp.model.manager;
 
 import java.util.ArrayList;
 import java.util.List;

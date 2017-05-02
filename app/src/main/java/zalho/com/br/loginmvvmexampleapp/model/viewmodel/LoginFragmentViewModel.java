@@ -8,15 +8,13 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.kelvinapps.rxfirebase.RxFirebaseDatabase;
-
 import javax.inject.Inject;
 
 import rx.Subscription;
 import rx.functions.Action1;
 import rx.subscriptions.CompositeSubscription;
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
-import zalho.com.br.loginmvvmexampleapp.manager.LoginManager;
+import zalho.com.br.loginmvvmexampleapp.model.manager.LoginManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 import zalho.com.br.loginmvvmexampleapp.view.fragments.TimelineFragment;
 

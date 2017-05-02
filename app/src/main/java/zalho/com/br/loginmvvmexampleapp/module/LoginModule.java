@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import zalho.com.br.loginmvvmexampleapp.manager.LoginManager;
+import zalho.com.br.loginmvvmexampleapp.model.manager.LoginManager;
 import zalho.com.br.loginmvvmexampleapp.service.LoginServiceImpl;
 
 /**

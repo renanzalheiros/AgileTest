@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import zalho.com.br.loginmvvmexampleapp.MainActivity;
 import zalho.com.br.loginmvvmexampleapp.MvvmApplication;
 import zalho.com.br.loginmvvmexampleapp.R;
 import zalho.com.br.loginmvvmexampleapp.databinding.FragmentTimelineBinding;
-import zalho.com.br.loginmvvmexampleapp.manager.TimelineManager;
 import zalho.com.br.loginmvvmexampleapp.model.viewmodel.TimelineFragmentViewModel;
 
 /**
@@ -27,6 +25,7 @@ public class TimelineFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewModel = new TimelineFragmentViewModel();
+        ((MvvmApplication) getActivity().getApplication()).getTimelineComponent().inject(viewModel);
 
         FragmentTimelineBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_timeline, container, false);
         binding.setViewModel(viewModel);
@@ -37,7 +36,6 @@ public class TimelineFragment extends Fragment{
     @Override
     public void onResume() {
 //        TimelineManager timelineManager = ((MvvmApplication) getActivity().getApplication()).getTimelineManager();
-        ((MvvmApplication) getActivity().getApplication()).getTimelineComponent().inject(viewModel);
         viewModel.onResume();
         super.onResume();
     }

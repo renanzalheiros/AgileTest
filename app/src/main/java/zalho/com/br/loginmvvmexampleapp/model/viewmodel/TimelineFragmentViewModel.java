@@ -3,6 +3,7 @@ package zalho.com.br.loginmvvmexampleapp.model.viewmodel;
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableBoolean;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,8 +14,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import rx.functions.Action1;
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
-import zalho.com.br.loginmvvmexampleapp.manager.TimelineManager;
+import zalho.com.br.loginmvvmexampleapp.model.manager.TimelineManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
 import zalho.com.br.loginmvvmexampleapp.view.adapter.TimelineAdapter;
 import zalho.com.br.loginmvvmexampleapp.view.fragments.TrocaHumorFragment;
@@ -26,6 +28,10 @@ import zalho.com.br.loginmvvmexampleapp.view.fragments.TrocaHumorFragment;
 public class TimelineFragmentViewModel extends BaseObservable{
 
     public final ObservableArrayList<EventoHumor> listaHumor = new ObservableArrayList<>();
+    public ObservableBoolean carregandoHumor = new ObservableBoolean(true);
+
+    public TimelineFragmentViewModel(){
+    }
 
     @Inject
     TimelineManager manager;
@@ -39,14 +45,25 @@ public class TimelineFragmentViewModel extends BaseObservable{
 
     //chamar no método onResume do TimelineFragment para atualizar a lista a cada onResume
     public void onResume(){
+        loadHumorList();
+    }
+
+    private void loadHumorList() {
         listaHumor.clear();
-        List<EventoHumor> eventosHumor = manager.getEventosHumor();
+        manager.getEventosFromWeb().subscribe(new Action1<List<EventoHumor>>() {
+            @Override
+            public void call(List<EventoHumor> eventoHumors) {
+                List<EventoHumor> listaParaInverter = eventoHumors;
+                Collections.reverse(listaParaInverter);
+                carregandoHumor.set(false);
+                listaHumor.addAll(listaParaInverter);
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
 
-        List<EventoHumor> eventosInvertidos = new ArrayList<>();
-        eventosInvertidos.addAll(eventosHumor);
-        Collections.reverse(eventosInvertidos);
-
-        listaHumor.addAll(eventosInvertidos);
+            }
+        });
     }
 
     public void onClickTrocarHumor(View view){

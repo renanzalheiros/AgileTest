@@ -1,28 +1,16 @@
 package zalho.com.br.loginmvvmexampleapp;
 
-import android.databinding.ObservableField;
-
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import rx.Observable;
 import rx.observers.TestSubscriber;
-import rx.subscriptions.CompositeSubscription;
-import zalho.com.br.loginmvvmexampleapp.manager.LoginManager;
+import zalho.com.br.loginmvvmexampleapp.model.manager.LoginManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
-import zalho.com.br.loginmvvmexampleapp.model.viewmodel.LoginFragmentViewModel;
 import zalho.com.br.loginmvvmexampleapp.service.LoginService;
 
 import static junit.framework.Assert.assertEquals;

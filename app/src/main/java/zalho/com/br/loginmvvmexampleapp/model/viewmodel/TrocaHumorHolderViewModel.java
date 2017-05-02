@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
 import zalho.com.br.loginmvvmexampleapp.MvvmApplication;
-import zalho.com.br.loginmvvmexampleapp.manager.TimelineManager;
+import zalho.com.br.loginmvvmexampleapp.model.manager.TimelineManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Humor;
 

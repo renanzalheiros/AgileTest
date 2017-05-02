@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 
 import javax.inject.Inject;
 
-import zalho.com.br.loginmvvmexampleapp.manager.TrocaHumorManager;
+import zalho.com.br.loginmvvmexampleapp.model.manager.TrocaHumorManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.EventoHumor;
 import zalho.com.br.loginmvvmexampleapp.view.adapter.TrocaHumorAdapter;
 

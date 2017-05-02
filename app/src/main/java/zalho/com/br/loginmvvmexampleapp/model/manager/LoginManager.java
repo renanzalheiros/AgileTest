@@ -1,17 +1,10 @@
-package zalho.com.br.loginmvvmexampleapp.manager;
+package zalho.com.br.loginmvvmexampleapp.model.manager;
 
 import android.util.Patterns;
-
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-
-import java.util.ArrayList;
-import java.util.Collections;
 
 import rx.Observable;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 import zalho.com.br.loginmvvmexampleapp.service.LoginService;
-import zalho.com.br.loginmvvmexampleapp.service.LoginServiceImpl;
 
 /**
  * Created by andre on 03/03/2017.

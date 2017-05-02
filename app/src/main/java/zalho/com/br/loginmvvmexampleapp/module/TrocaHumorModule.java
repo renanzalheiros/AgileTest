@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import zalho.com.br.loginmvvmexampleapp.manager.TrocaHumorManager;
+import zalho.com.br.loginmvvmexampleapp.model.manager.TrocaHumorManager;
 
 /**
  * Created by andre on 26/04/2017.

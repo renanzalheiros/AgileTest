@@ -11,9 +11,28 @@ public class EventoHumor {
     private Humor humor;
     private long data;
 
+    public EventoHumor(){
+    }
+
     public EventoHumor(Humor humor){
         this.humor = humor;
         data = Calendar.getInstance().getTimeInMillis();
+    }
+
+    public Humor getHumor() {
+        return humor;
+    }
+
+    public void setHumor(Humor humor) {
+        this.humor = humor;
+    }
+
+    public long getData() {
+        return data;
+    }
+
+    public void setData(long data) {
+        this.data = data;
     }
 
     public InformacaoHumor getInformacaoHumor(){
