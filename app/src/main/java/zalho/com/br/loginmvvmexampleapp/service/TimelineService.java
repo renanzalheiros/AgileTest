@@ -22,27 +22,19 @@ import zalho.com.br.loginmvvmexampleapp.model.entidades.InformacaoHumor;
 
 public class TimelineService {
 
-    public TimelineService(){
-
-    }
-
     public Observable<List<EventoHumor>> getHistoricoEventosHumorWeb(String userId){
         return RxFirebaseDatabase.observeSingleValueEvent(FirebaseDatabase.getInstance(FirebaseApp.getInstance()).getReference("users")
                 .child(userId).child("historicoHumor")).map(new Func1<DataSnapshot, List<EventoHumor>>() {
             @Override
             public List<EventoHumor> call(DataSnapshot dataSnapshot) {
-                List<EventoHumor> eventos = new ArrayList<EventoHumor>();
+                List<EventoHumor> eventos = new ArrayList<>();
                 for(DataSnapshot data : dataSnapshot.getChildren()){
                     EventoHumor evento = new EventoHumor(new Humor(InformacaoHumor.valueOf(data.child("humor").getValue(String.class)), 0));
                     evento.setData(data.child("data").getValue(long.class));
                     eventos.add(evento);
                 }
-
                 return eventos;
             }
         });
-    }
-
-    public void addEventoHumor(EventoHumor eventoHumor) {
     }
 }

@@ -86,6 +86,7 @@ public class LoginFragmentViewModel extends BaseObservable {
             }, new Action1<Throwable>() {
                 @Override
                 public void call(Throwable throwable) {
+                    throwable.printStackTrace();
                     Snackbar.make(view, "Email ou senha incorretos", Snackbar.LENGTH_LONG).show();
                 }
             });

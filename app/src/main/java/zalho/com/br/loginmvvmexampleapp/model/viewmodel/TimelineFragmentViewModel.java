@@ -4,9 +4,11 @@ import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,9 +32,6 @@ public class TimelineFragmentViewModel extends BaseObservable{
     public final ObservableArrayList<EventoHumor> listaHumor = new ObservableArrayList<>();
     public ObservableBoolean carregandoHumor = new ObservableBoolean(true);
 
-    public TimelineFragmentViewModel(){
-    }
-
     @Inject
     TimelineManager manager;
 
@@ -55,13 +54,14 @@ public class TimelineFragmentViewModel extends BaseObservable{
             public void call(List<EventoHumor> eventoHumors) {
                 List<EventoHumor> listaParaInverter = eventoHumors;
                 Collections.reverse(listaParaInverter);
-                carregandoHumor.set(false);
                 listaHumor.addAll(listaParaInverter);
+                carregandoHumor.set(false);
+//                notifyChange();
             }
         }, new Action1<Throwable>() {
             @Override
             public void call(Throwable throwable) {
-
+                throwable.printStackTrace();
             }
         });
     }
