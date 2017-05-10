@@ -14,6 +14,7 @@ import rx.Subscription;
 import rx.functions.Action1;
 import rx.subscriptions.CompositeSubscription;
 import zalho.com.br.loginmvvmexampleapp.MainActivity;
+import zalho.com.br.loginmvvmexampleapp.MvvmApplication;
 import zalho.com.br.loginmvvmexampleapp.model.manager.LoginManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 import zalho.com.br.loginmvvmexampleapp.view.fragments.TimelineFragment;
@@ -43,6 +44,7 @@ public class LoginFragmentViewModel extends BaseObservable {
     }
 
     public void onClickLogin(final View view){
+        ((MvvmApplication)((MainActivity) view.getContext()).getApplication()).getLoginComponent().inject(loginManager);
         //Fechar o teclado;
         InputMethodManager systemService = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         systemService.hideSoftInputFromWindow(view.getWindowToken(), 0);

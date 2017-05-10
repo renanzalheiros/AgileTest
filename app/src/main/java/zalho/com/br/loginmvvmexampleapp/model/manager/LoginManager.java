@@ -2,7 +2,10 @@ package zalho.com.br.loginmvvmexampleapp.model.manager;
 
 import android.util.Patterns;
 
+import javax.inject.Inject;
+
 import rx.Observable;
+import rx.functions.Action1;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 import zalho.com.br.loginmvvmexampleapp.service.LoginService;
 
@@ -12,29 +15,19 @@ import zalho.com.br.loginmvvmexampleapp.service.LoginService;
 
 public class LoginManager {
 
-    private LoginService loginService;
+    @Inject
+    LoginService loginService;
 
-    public LoginManager(LoginService loginService) {
-        this.loginService = loginService;
+    public LoginManager() {
     }
 
     public Observable<String> realizaLogin(Login login) {
+        return verificaCredenciais(login);
 //        String first = loginService.verificaCredenciais(login.getLogin(), login.getSenha()).toBlocking().first();
+    }
 
+    protected Observable<String> verificaCredenciais(Login login) {
         return loginService.verificaCredenciais(login);
-
-//        Task<AuthResult> authResultTask = loginService.verificaCredenciais(login);
-//        authResultTask.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                if(task.isSuccessful()){
-//                    retorno = "loginSucesso";
-//                } else {
-//                    retorno = "loginFalhaCredenciais";
-//                }
-//            }
-//        });
-//        return retorno;
     }
 
     public boolean validaEmail(String email) {

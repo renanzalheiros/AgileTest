@@ -6,7 +6,7 @@ package zalho.com.br.loginmvvmexampleapp.model.entidades;
 
 public class Login {
 
-    private int idLogin;
+    private String idLogin;
     private String login;
     private String senha;
 
@@ -18,11 +18,11 @@ public class Login {
         this.senha = senha;
     }
 
-    public int getIdLogin() {
+    public String getIdLogin() {
         return idLogin;
     }
 
-    public void setIdLogin(int idLogin) {
+    public void setIdLogin(String idLogin) {
         this.idLogin = idLogin;
     }
 

@@ -52,9 +52,8 @@ public class TimelineFragmentViewModel extends BaseObservable{
         manager.getEventosFromWeb().subscribe(new Action1<List<EventoHumor>>() {
             @Override
             public void call(List<EventoHumor> eventoHumors) {
-                List<EventoHumor> listaParaInverter = eventoHumors;
-                Collections.reverse(listaParaInverter);
-                listaHumor.addAll(listaParaInverter);
+                Collections.reverse(eventoHumors);
+                listaHumor.addAll(eventoHumors);
                 carregandoHumor.set(false);
 //                notifyChange();
             }

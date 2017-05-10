@@ -1,19 +1,25 @@
-package zalho.com.br.loginmvvmexampleapp;
+package zalho.com.br.loginmvvmexampleapp.testCase;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import javax.inject.Inject;
 
 import rx.Observable;
 import rx.observers.TestSubscriber;
-import zalho.com.br.loginmvvmexampleapp.model.manager.LoginManager;
 import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
+import zalho.com.br.loginmvvmexampleapp.model.manager.LoginManager;
 import zalho.com.br.loginmvvmexampleapp.service.LoginService;
+import zalho.com.br.loginmvvmexampleapp.service.LoginServiceImpl;
 
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -23,6 +29,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class LoginUnitTest {
 
+    private static final String LOGIN_SUCCESS_ID = "1";
     public static final String LOGIN_SUCCESS = "salsa@loginmvvm.com";
     public static final String SENHA_SUCCESS = "123qwe";
 
@@ -38,23 +45,21 @@ public class LoginUnitTest {
     @Mock
     LoginService service;
 
-    @InjectMocks private LoginManager manager;
+    @InjectMocks LoginManager manager;
 
     @Before
     public void beforeTests(){
-        Observable<String> loginSucesso = Observable.just(LOGIN_SUCCESS);
-        Login login = new Login(LOGIN_SUCCESS, SENHA_SUCCESS);
-        when(service.verificaCredenciais(login)).thenReturn(loginSucesso);
 
-        Observable<String> loginErro = Observable.just(MSG_FAIL_EMAIL_SENHA);
-        Login loginFail = new Login(LOGIN_FAIL, SENHA_FAIL);
-        when(service.verificaCredenciais(loginFail)).thenReturn(loginErro);
     }
 
     @Test
     public void testLoginSuccess(){
         Login loginSuccess = new Login(LOGIN_SUCCESS, SENHA_SUCCESS);
+        loginSuccess.setIdLogin(LOGIN_SUCCESS_ID);
+        Observable<String> loginSucesso = Observable.just(loginSuccess.getLogin());
+        when(service.verificaCredenciais(loginSuccess)).thenReturn(loginSucesso);
         TestSubscriber<String> testSubscriber = new TestSubscriber<>();
+
         manager.realizaLogin(loginSuccess).subscribe(testSubscriber);
         testSubscriber.assertValue(loginSuccess.getLogin());
         testSubscriber.unsubscribe();
@@ -63,7 +68,10 @@ public class LoginUnitTest {
     @Test
     public void testLoginFail(){
         Login loginFail = new Login(LOGIN_FAIL, SENHA_FAIL);
+        Observable<String> loginErro = Observable.just(MSG_FAIL_EMAIL_SENHA);
+        when(service.verificaCredenciais(loginFail)).thenReturn(loginErro);
         TestSubscriber<String> testSubscriber = new TestSubscriber<>();
+
         manager.realizaLogin(loginFail).subscribe(testSubscriber);
         testSubscriber.assertValue(MSG_FAIL_EMAIL_SENHA);
         testSubscriber.unsubscribe();
@@ -73,7 +81,6 @@ public class LoginUnitTest {
     public void testSenhaValidation(){
         boolean senhaCurta = manager.validaSenha(INVALID_SENHA_MIN);
         boolean senhaLonga = manager.validaSenha(INVALID_SENHA_MAX);
-
         boolean senhaCorreta = manager.validaSenha(SENHA_SUCCESS);
 
         assertEquals(false, senhaCurta);

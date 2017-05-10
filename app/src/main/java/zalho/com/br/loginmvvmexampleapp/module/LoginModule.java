@@ -4,7 +4,10 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import rx.Observable;
+import zalho.com.br.loginmvvmexampleapp.model.entidades.Login;
 import zalho.com.br.loginmvvmexampleapp.model.manager.LoginManager;
+import zalho.com.br.loginmvvmexampleapp.service.LoginService;
 import zalho.com.br.loginmvvmexampleapp.service.LoginServiceImpl;
 
 /**
@@ -16,6 +19,12 @@ public class LoginModule {
     @Provides
     @Singleton
     LoginManager getLoginManager(){
-        return new LoginManager(new LoginServiceImpl());
+        return new LoginManager();
+    }
+
+    @Provides
+    @Singleton
+    LoginService getLoginService(){
+        return new LoginServiceImpl();
     }
 }
