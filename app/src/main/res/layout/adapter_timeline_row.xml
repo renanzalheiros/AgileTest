@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="@{viewModel.eventoHumor.hourToString}"
+            android:text="@{viewModel.eventoHumor.dateToString}"
             tools:text="18:15"
             app:layout_constraintEnd_toEndOf="@id/lyt_adapter_timeline"
             app:layout_constraintBottom_toBottomOf="@id/lyt_adapter_timeline" />

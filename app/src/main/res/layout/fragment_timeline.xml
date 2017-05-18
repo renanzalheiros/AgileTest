@@ -16,8 +16,8 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             app:isGone="@{viewModel.carregandoHumor}"
             android:gravity="center">
 
@@ -40,13 +40,23 @@
             android:id="@+id/rv_timeline"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:isGone="@{!viewModel.listaVazia}"
             app:itemsTimeline="@{viewModel.listaHumor}"
             app:layout_constraintTop_toTopOf="@id/lyt_timeline"
             app:layout_constraintStart_toStartOf="@id/lyt_timeline"
             app:layout_constraintEnd_toEndOf="@id/lyt_timeline"
             app:layout_constraintBottom_toTopOf="@id/btn_troca_humor">
-
         </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Você não alterou seu humor hoje"
+            app:isGone="@{viewModel.listaVazia}"
+            app:layout_constraintTop_toTopOf="@id/lyt_timeline"
+            app:layout_constraintStart_toStartOf="@id/lyt_timeline"
+            app:layout_constraintEnd_toEndOf="@id/lyt_timeline"
+            app:layout_constraintBottom_toTopOf="@id/btn_troca_humor" />
     </android.support.constraint.ConstraintLayout>
 
 </layout>

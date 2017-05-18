@@ -1,5 +1,7 @@
 package zalho.com.br.loginmvvmexampleapp.view.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -35,7 +37,8 @@ public class TimelineFragment extends Fragment{
 
     @Override
     public void onResume() {
-//        TimelineManager timelineManager = ((MvvmApplication) getActivity().getApplication()).getTimelineManager();
+        //        TimelineManager timelineManager = ((MvvmApplication) getActivity().getApplication()).getTimelineManager();
+        SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         viewModel.onResume();
         super.onResume();
     }

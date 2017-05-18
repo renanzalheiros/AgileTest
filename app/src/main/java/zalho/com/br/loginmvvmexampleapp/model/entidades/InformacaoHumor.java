@@ -6,14 +6,14 @@ package zalho.com.br.loginmvvmexampleapp.model.entidades;
 
 public enum InformacaoHumor {
 
-    BEM("Bem"),
-    FELIZ("Feliz"),
-    EMPOLGADO("Empolgado"),
-    TRISTE("Triste"),
-    DEPRIMIDO("Deprimido"),
-    LUTO("Luto"),
-    CANSADO("Cansado"),
-    IRRITADO("Irritado");
+    Bem("Bem"),
+    Feliz("Feliz"),
+    Empogado("Empolgado"),
+    Triste("Triste"),
+    Deprimido("Deprimido"),
+    Luto("Luto"),
+    Cansado("Cansado"),
+    Irritado("Irritado");
 
     private String vmensagem;
 

@@ -43,23 +43,24 @@ public class EventoHumor {
         return humor.getInfoHumor().getMensagem();
     }
 
-    public String hourToString(){
+    public String dateToString(){
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(data);
         if(calendar.get(Calendar.MINUTE) < 10){
-            return calendar.get(Calendar.HOUR_OF_DAY) + ":0" +  calendar.get(Calendar.MINUTE);
+            return calendar.get(Calendar.DAY_OF_MONTH) + "/"
+                    + calendar.get(Calendar.MONTH) + " - "
+                    + calendar.get(Calendar.HOUR_OF_DAY)
+                    + ":0" +  calendar.get(Calendar.MINUTE);
         }
-        return calendar.get(Calendar.HOUR_OF_DAY) + ":" +  calendar.get(Calendar.MINUTE);
+        return calendar.get(Calendar.DAY_OF_MONTH) + "/"
+                + calendar.get(Calendar.MONTH) + " - "
+                + calendar.get(Calendar.HOUR_OF_DAY)
+                + ":" +  calendar.get(Calendar.MINUTE);
     }
 
     public int getHumorImagePath(){
         return humor.getHumorImagePath();
     }
-
-//    public void setNewDate(){
-//        this.data.setTime(new Date());
-//    }
-
 
 }

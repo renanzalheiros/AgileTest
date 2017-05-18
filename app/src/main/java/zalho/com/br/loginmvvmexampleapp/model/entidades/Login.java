@@ -18,6 +18,12 @@ public class Login {
         this.senha = senha;
     }
 
+    public Login(String idLogin, String login, String senha){
+        this.idLogin = idLogin;
+        this.login = login;
+        this.senha = senha;
+    }
+
     public String getIdLogin() {
         return idLogin;
     }
